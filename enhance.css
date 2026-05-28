@@ -1,0 +1,54 @@
+/* Add these styles to your CSS file for better appearance */
+
+.table-responsive {
+    margin-top: 20px;
+}
+
+.card {
+    transition: transform 0.2s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+#filter-container select,
+#filter-container input {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.page-link {
+    cursor: pointer;
+}
+
+.table tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.view-btn {
+    transition: all 0.2s;
+}
+
+.view-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Loading spinner animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.spinner-border {
+    display: inline-block;
+    width: 3rem;
+    height: 3rem;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.75s linear infinite;
+}

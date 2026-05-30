@@ -51,7 +51,7 @@ const vehicleFuelHtml = vehicleFuelTransaction().then(details => {
             <td>${element.transactionID}</td>
             <td><span>🏦${element.accountNum}</span></td>
             <td><span>${element.utilizer? "💧"+element.utilizer: "💰Funding"}</span></td>
-            <td><span>${element.litres? "⛽"+nairaFormatter.format(element.litres):"-"}</span></td>
+            <td><span>${element.litres? "⛽"+element.litres:"-"}</span></td>
             <td>${element.price? nairaFormatter.format(element.price): "-"} </td>
             <td><span>${nairaFormatter.format(element.amount)}  </span></td>
             <td><span>${nairaFormatter.format(element.balance)} </span></td>

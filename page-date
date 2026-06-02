@@ -1,0 +1,59 @@
+When you have dozens or hundreds of pages, showing every single page number breaks your layout. Instead, you can use a sliding window logic in JavaScript to show only a small cluster of pages around the active page, flanked by first, last, and ellipsis (...) buttons.
+Here is how to update your JavaScript logic to truncate the visible page numbers.
+## The Truncated JavaScript Controls Logic
+Replace your previous renderControls function in script.js with this updated version:
+
+function renderControls(totalPages) {
+    const controls = document.getElementById('pagination-controls');
+    controls.innerHTML = ''; // Clear old buttons
+
+    // How many page numbers to show on each side of the current page
+    const range = 2; 
+
+    // 1. Always Render "Previous" Button
+    if (currentPage > 1) {
+        controls.innerHTML += `<button onclick="loadPage(${currentPage - 1})">Previous</button> `;
+    }
+
+    // 2. Always Render First Page Button
+    if (currentPage > range + 1) {
+        controls.innerHTML += `<button onclick="loadPage(1)">1</button> `;
+        if (currentPage > range + 2) {
+            controls.innerHTML += `<span>...</span> `; // Ellipsis separator
+        }
+    }
+
+    // 3. Render the Middle Sliding Range
+    let start = Math.max(1, currentPage - range);
+    let end = Math.min(totalPages, currentPage + range);
+
+    for (let i = start; i <= end; i++) {
+        const activeStyle = (i === currentPage) ? 'style="font-weight:bold; background-color:#ddd;"' : '';
+        controls.innerHTML += `<button ${activeStyle} onclick="loadPage(${i})">${i}</button> `;
+    }
+
+    // 4. Always Render Last Page Button
+    if (currentPage < totalPages - range) {
+        if (currentPage < totalPages - range - 1) {
+            controls.innerHTML += `<span>...</span> `; // Ellipsis separator
+        }
+        controls.innerHTML += `<button onclick="loadPage(${totalPages})">${totalPages}</button> `;
+    }
+
+    // 5. Always Render "Next" Button
+    if (currentPage < totalPages) {
+        controls.innerHTML += `<button onclick="loadPage(${currentPage + 1})">Next</button>`;
+    }
+}
+
+## How This Works in Practice
+If you have 50 total pages and change the current page, the visual output dynamically scales:
+
+* When on Page 1: [1] 2 3 ... 50 Next
+* When on Page 25: Previous 1 ... 23 24 [25] 26 27 ... 50 Next
+* When on Page 50: Previous 1 ... 48 49 [50]
+
+If you want to keep optimizing this layout, let me know if you would like to:
+
+* Add a dropdown menu to let users select how many rows to display per page (e.g., 10, 25, 50).
+* Implement a search bar that filters these results live without resetting your styles.

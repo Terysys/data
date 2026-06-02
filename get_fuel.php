@@ -39,7 +39,7 @@ $stmt = $con->prepare(
     LEFT JOIN fund ON trans.transactionID = fund.transactionID 
     LEFT JOIN fuelvehicle ON trans.transactionID = fuelvehicle.transactionID
     LEFT JOIN fuelgen ON trans.transactionID = fuelgen.transactionID
-    WHERE trans.accountNum = '1234567890' ORDER BY trans.date DESC");
+    WHERE trans.accountNum = '1234567890' ORDER BY trans.date DESC LIMIT 50 OFFSET 0");
 
 
 

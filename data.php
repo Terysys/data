@@ -1,3 +1,17 @@
+<?php
+
+
+//load classes 
+include_once dirname(__DIR__) . '../core/init.php';
+
+//include the login classes namespace
+use support\classes\account\pager;
+
+$page = new pager();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,64 +71,11 @@
             <tbody id="fuel-record">
             </tbody>
         </table>
-        <nav aria-label="Page navigation">
-            <ul class="pagination">
-              <!-- First Page -->
-              <li class="page-item disabled">
-                <a class="page-link" href="#" aria-label="First">
-                  <span aria-hidden="true">&laquo;&laquo; First</span>
-                </a>
-              </li>
-          
-              <!-- Previous Page -->
-              <li class="page-item disabled">
-                <a class="page-link" href="#" aria-label="Previous">
-                  <span aria-hidden="true">&laquo; Previous</span>
-                </a>
-              </li>
+        
+        <?php
 
-              <!-- Page 1 -->
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">1</span>
-                </a>
-              </li>
-
-              <!-- Page 2 -->
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">2</span>
-                </a>
-              </li>
-
-              <!-- Page 3 -->
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">3</span>
-                </a>
-              </li>
-          
-              <!-- Next Page -->
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                  <span aria-hidden="true">Next &raquo;</span>
-                </a>
-              </li>
-          
-              <!-- Last Page -->
-              <li class="page-item">
-                <a class="page-link" href="#" aria-label="Last">
-                  <span aria-hidden="true">Last &raquo;&raquo;</span>
-                </a>
-              </li>
-
-              <div class="page-jump">
-                <span>Go to page</span>
-                <input type="number" class="page-jump-input" min="1" max="11" value="3">
-                <button class="jump-btn">Go</button>
-              </div>
-            </ul>
-          </nav>
+          $page->display();
+          ?>
 
           <div class="table-footer">
             <span>Total Records: 1000</span>
@@ -122,16 +83,14 @@
           </div>
           
     </div>
-    <script src="js/b
-    ootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script src="fuel-transaction.js"></script>
+        <script src="js/b
+          ootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+        <script src="fuel-transaction.js"></script>
 
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-
-        
-    </script>
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable();
+            });  
+        </script>
 </body>
 </html>

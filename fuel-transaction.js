@@ -11,7 +11,7 @@ let fuel = [];
 server and return it as an array of objects */
 async function vehicleFuelTransaction() {
     try {
-            const response = await fetch('http://localhost/data/get_fuel.php');
+            const response = await fetch('http://localhost/suport/get_fuel.php');
             const data = await response.json();
 
             //convert to string 
